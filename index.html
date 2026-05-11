@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Intelligent Ageing — Live the next thirty years well.</title>
+<meta name="description" content="A longevity intelligence platform. Connect your wearables, upload your blood reports, and let AI translate the signal into a life you actually want to live.">
+<meta name="theme-color" content="#2d3a32">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Intelligent Ageing">
+<meta property="og:description" content="Live the next thirty years well.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,200;1,9..144,300;1,9..144,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --sage:       #2d3a32;
+  --sage-soft:  #4a5d50;
+  --bone:       #f4ede4;
+  --bone-2:     #f7f3ec;
+  --sand:       #e8dfce;
+  --honey:      #c9a26b;
+  --honey-deep: #b08a52;
+  --stone:      #6f6557;
+  --mist:       #d6cfc1;
+  --ink:        #1a1a1a;
+
+  --serif: 'Fraunces', 'Times New Roman', serif;
+  --sans:  'Manrope', system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  background: var(--bone);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.55;
+  overflow-x: hidden;
+}
+
+/* Subtle grain on body */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0.04;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ─────────────────────────────────────────
+   TOP BAR
+───────────────────────────────────────── */
+.topbar {
+  border-bottom: 1px solid var(--mist);
+  padding: 18px 0;
+  position: sticky;
+  top: 0;
+  background: rgba(244, 237, 228, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 50;
+}
+.topbar-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+.topbar-mark {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-style: italic;
+  font-size: 17px;
+  color: var(--sage);
+  text-decoration: none;
+}
+.topbar-mark svg { width: 28px; height: 28px; }
+.topbar-cta {
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--sage);
+  text-decoration: none;
+  padding: 10px 18px;
+  border: 1px solid var(--sage);
+  border-radius: 999px;
+  transition: all 0.25s ease;
+}
+.topbar-cta:hover {
+  background: var(--sage);
+  color: var(--bone-2);
+}
+
+/* ─────────────────────────────────────────
+   HERO
+───────────────────────────────────────── */
+.hero {
+  padding: 80px 0 96px;
+  position: relative;
+}
+.hero-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-bottom: 28px;
+  text-align: center;
+}
+.hero-eyebrow .dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--honey);
+  border-radius: 50%;
+  vertical-align: middle;
+  margin: 0 12px;
+  transform: translateY(-2px);
+}
+
+.hero-mark {
+  width: 140px;
+  height: 140px;
+  margin: 0 auto 40px;
+  display: block;
+  animation: gentle-rise 1.2s cubic-bezier(0.2, 0.8, 0.3, 1);
+}
+
+.hero h1 {
+  font-family: var(--serif);
+  font-weight: 200;
+  font-style: italic;
+  font-size: clamp(44px, 7vw, 88px);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  color: var(--sage);
+  text-align: center;
+  margin-bottom: 28px;
+  animation: fade-up 1s 0.2s both cubic-bezier(0.2, 0.8, 0.3, 1);
+}
+.hero h1 .em {
+  font-style: normal;
+  font-weight: 400;
+}
+.hero h1 .br { display: block; }
+
+.hero-lede {
+  font-family: var(--sans);
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--stone);
+  text-align: center;
+  max-width: 580px;
+  margin: 0 auto 56px;
+  animation: fade-up 1s 0.4s both cubic-bezier(0.2, 0.8, 0.3, 1);
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes gentle-rise {
+  from { opacity: 0; transform: translateY(20px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ─────────────────────────────────────────
+   EMAIL FORM
+───────────────────────────────────────── */
+.form-wrap {
+  max-width: 520px;
+  margin: 0 auto;
+  animation: fade-up 1s 0.6s both cubic-bezier(0.2, 0.8, 0.3, 1);
+}
+
+.signup-form {
+  display: flex;
+  gap: 8px;
+  background: var(--bone-2);
+  padding: 6px;
+  border-radius: 999px;
+  border: 1px solid var(--mist);
+  box-shadow: 0 1px 3px rgba(45, 58, 50, 0.04), 0 12px 32px rgba(45, 58, 50, 0.06);
+  transition: all 0.3s ease;
+}
+.signup-form:focus-within {
+  border-color: var(--sage);
+  box-shadow: 0 1px 3px rgba(45, 58, 50, 0.06), 0 16px 40px rgba(45, 58, 50, 0.10);
+}
+
+.signup-form input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 14px 22px;
+  font-family: var(--sans);
+  font-size: 15px;
+  color: var(--ink);
+  outline: none;
+}
+.signup-form input::placeholder { color: var(--stone); }
+
+.signup-form button {
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--bone-2);
+  background: var(--sage);
+  border: none;
+  padding: 14px 28px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+.signup-form button:hover {
+  background: var(--ink);
+  transform: translateY(-1px);
+}
+.signup-form button:active { transform: translateY(0); }
+
+.form-meta {
+  text-align: center;
+  font-size: 12px;
+  color: var(--stone);
+  margin-top: 18px;
+  letter-spacing: 0.04em;
+}
+.form-meta .honey-dot {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  background: var(--honey);
+  border-radius: 50%;
+  vertical-align: middle;
+  margin: 0 8px;
+  transform: translateY(-2px);
+}
+
+.form-success {
+  display: none;
+  text-align: center;
+  padding: 24px;
+  background: var(--bone-2);
+  border: 1px solid var(--mist);
+  border-radius: 24px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 22px;
+  color: var(--sage);
+}
+.form-success.active { display: block; animation: fade-up 0.5s ease; }
+.form-success .dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  background: var(--honey);
+  border-radius: 50%;
+  vertical-align: middle;
+  margin: 0 10px 4px 0;
+}
+
+/* ─────────────────────────────────────────
+   SECTION SCAFFOLD
+───────────────────────────────────────── */
+section {
+  padding: 96px 0;
+  border-top: 1px solid var(--mist);
+}
+.section-head {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 48px;
+  margin-bottom: 64px;
+  align-items: baseline;
+}
+.section-num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 14px;
+  color: var(--sage);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+.section-title {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(30px, 4vw, 48px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--sage);
+  margin-bottom: 18px;
+}
+.section-title em { font-style: italic; font-weight: 400; }
+.section-desc {
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--stone);
+  max-width: 580px;
+}
+@media (max-width: 720px) {
+  .section-head { grid-template-columns: 1fr; gap: 14px; margin-bottom: 40px; }
+}
+
+/* ─────────────────────────────────────────
+   THE PROBLEM
+───────────────────────────────────────── */
+.problem-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--mist);
+}
+.problem-cell {
+  padding: 36px 28px 36px 0;
+  border-right: 1px solid var(--mist);
+}
+.problem-cell:last-child { border-right: none; padding-right: 0; padding-left: 0; }
+.problem-cell:not(:first-child) { padding-left: 28px; }
+
+.problem-num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 32px;
+  color: var(--honey);
+  margin-bottom: 12px;
+}
+.problem-headline {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.3;
+  color: var(--sage);
+  margin-bottom: 12px;
+}
+.problem-desc {
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--stone);
+}
+
+@media (max-width: 720px) {
+  .problem-grid { grid-template-columns: 1fr; }
+  .problem-cell {
+    border-right: none;
+    border-bottom: 1px solid var(--mist);
+    padding: 28px 0;
+  }
+  .problem-cell:not(:first-child) { padding-left: 0; }
+  .problem-cell:last-child { border-bottom: none; padding-bottom: 0; }
+}
+
+/* ─────────────────────────────────────────
+   FEATURES (WHAT'S COMING)
+───────────────────────────────────────── */
+.features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.feature {
+  padding: 40px;
+  background: var(--bone-2);
+  border: 1px solid var(--mist);
+  border-radius: 18px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+.feature:hover {
+  background: var(--sand);
+  transform: translateY(-2px);
+  border-color: var(--sage-soft);
+}
+.feature-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  color: var(--sage);
+}
+.feature-eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--honey-deep);
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+.feature h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-style: italic;
+  font-size: 26px;
+  line-height: 1.2;
+  color: var(--sage);
+  margin-bottom: 14px;
+  letter-spacing: -0.01em;
+}
+.feature p {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--stone);
+}
+@media (max-width: 720px) {
+  .features { grid-template-columns: 1fr; }
+  .feature { padding: 32px 28px; }
+}
+
+/* ─────────────────────────────────────────
+   FOUNDER STORY
+───────────────────────────────────────── */
+.founder {
+  background: var(--sage);
+  margin: 0 -24px;
+  padding: 110px 24px;
+  border-top: none;
+}
+.founder .container {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 80px;
+  align-items: center;
+}
+.founder-quote-num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 200;
+  font-size: 200px;
+  line-height: 0.7;
+  color: var(--honey);
+  opacity: 0.9;
+}
+.founder-content {
+  color: var(--bone-2);
+}
+.founder-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--honey);
+  margin-bottom: 24px;
+}
+.founder h2 {
+  font-family: var(--serif);
+  font-weight: 200;
+  font-style: italic;
+  font-size: clamp(28px, 3.6vw, 42px);
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  margin-bottom: 28px;
+  color: var(--bone-2);
+}
+.founder h2 em { font-style: normal; font-weight: 400; }
+.founder p {
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.75;
+  color: rgba(244, 237, 228, 0.78);
+  margin-bottom: 18px;
+}
+.founder-sig {
+  margin-top: 32px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 18px;
+  color: var(--bone-2);
+}
+.founder-sig small {
+  display: block;
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(244, 237, 228, 0.55);
+  margin-top: 6px;
+}
+@media (max-width: 880px) {
+  .founder { padding: 80px 24px; }
+  .founder .container { grid-template-columns: 1fr; gap: 32px; }
+  .founder-quote-num { font-size: 120px; }
+}
+
+/* ─────────────────────────────────────────
+   FOUNDING MEMBER (HONEY MOMENT)
+───────────────────────────────────────── */
+.founding {
+  text-align: center;
+  padding: 110px 0;
+  position: relative;
+}
+.founding-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--honey-deep);
+  margin-bottom: 28px;
+  font-weight: 600;
+}
+.founding-eyebrow .dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--honey);
+  border-radius: 50%;
+  vertical-align: middle;
+  margin: 0 12px;
+  transform: translateY(-2px);
+}
+.founding h2 {
+  font-family: var(--serif);
+  font-weight: 200;
+  font-style: italic;
+  font-size: clamp(36px, 5.5vw, 64px);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: var(--sage);
+  max-width: 720px;
+  margin: 0 auto 28px;
+}
+.founding h2 em { font-style: normal; font-weight: 400; }
+.founding-meta {
+  font-family: var(--sans);
+  font-size: 16px;
+  color: var(--stone);
+  max-width: 520px;
+  margin: 0 auto 48px;
+  line-height: 1.65;
+}
+.founding-perks {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  max-width: 800px;
+  margin: 0 auto 48px;
+  border-top: 1px solid var(--mist);
+  border-bottom: 1px solid var(--mist);
+}
+.perk {
+  padding: 28px 16px;
+  text-align: center;
+  border-right: 1px solid var(--mist);
+}
+.perk:last-child { border-right: none; }
+.perk-num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 28px;
+  color: var(--honey-deep);
+  margin-bottom: 6px;
+}
+.perk-label {
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+@media (max-width: 720px) {
+  .founding-perks { grid-template-columns: repeat(2, 1fr); }
+  .perk:nth-child(2) { border-right: none; }
+  .perk:nth-child(1), .perk:nth-child(2) { border-bottom: 1px solid var(--mist); }
+}
+
+/* ─────────────────────────────────────────
+   FAQ
+───────────────────────────────────────── */
+.faq-list {
+  max-width: 760px;
+  margin: 0 auto;
+}
+.faq-item {
+  border-bottom: 1px solid var(--mist);
+  padding: 28px 0;
+}
+.faq-item summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 24px;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-style: italic;
+  font-size: 22px;
+  color: var(--sage);
+  line-height: 1.3;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: "+";
+  font-family: var(--serif);
+  font-style: normal;
+  font-weight: 200;
+  color: var(--honey-deep);
+  font-size: 28px;
+  line-height: 1;
+  transition: transform 0.3s ease;
+}
+.faq-item[open] summary::after { transform: rotate(45deg); }
+.faq-item p {
+  font-family: var(--sans);
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: var(--stone);
+  padding-top: 18px;
+  max-width: 620px;
+}
+
+/* ─────────────────────────────────────────
+   FOOTER CTA
+───────────────────────────────────────── */
+.cta {
+  text-align: center;
+  padding: 110px 0 60px;
+}
+.cta h2 {
+  font-family: var(--serif);
+  font-weight: 200;
+  font-style: italic;
+  font-size: clamp(36px, 5.2vw, 60px);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  color: var(--sage);
+  max-width: 760px;
+  margin: 0 auto 40px;
+}
+.cta h2 em { font-style: normal; font-weight: 400; }
+
+/* ─────────────────────────────────────────
+   FOOTER
+───────────────────────────────────────── */
+footer {
+  border-top: 1px solid var(--mist);
+  padding: 40px 0 60px;
+}
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.footer-mark {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-style: italic;
+  font-size: 16px;
+  color: var(--sage);
+}
+.footer-mark svg { width: 24px; height: 24px; }
+.footer-meta {
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+.footer-credit {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  color: var(--stone);
+  text-transform: none;
+}
+@media (max-width: 540px) {
+  .footer-inner { flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ THE MARK (shared SVG) ═══════════ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="ia-mark" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="38" fill="none" stroke="currentColor" stroke-width="2.4"/>
+      <path d="M27 56 Q40 42, 50 50 T73 44" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/>
+      <circle cx="50" cy="20" r="5.5" fill="#c9a26b"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ═══════════ TOP BAR ═══════════ -->
+<header class="topbar">
+  <div class="container topbar-inner">
+    <a href="#" class="topbar-mark">
+      <svg style="color: var(--sage);"><use href="#ia-mark"/></svg>
+      <span>intelligent <em>ageing</em></span>
+    </a>
+    <a href="#waitlist" class="topbar-cta">Join Waitlist</a>
+  </div>
+</header>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero" style="border-top: none;">
+  <div class="container">
+    <div class="hero-eyebrow">
+      <span>Coming Soon</span>
+      <span class="dot"></span>
+      <span>Adelaide · Built in Public</span>
+    </div>
+
+    <svg class="hero-mark" style="color: var(--sage);"><use href="#ia-mark"/></svg>
+
+    <h1>
+      Live the<br>
+      <span class="br">next thirty</span>
+      <span class="em">years well.</span>
+    </h1>
+
+    <p class="hero-lede">
+      A longevity intelligence platform. Connect your wearables, upload your blood reports, and let AI translate the signal into a life that actually fits your body.
+    </p>
+
+    <div class="form-wrap" id="waitlist">
+      <!--
+        ═══════════════════════════════════════════════════
+        EMAIL CAPTURE FORM
+        ═══════════════════════════════════════════════════
+
+        TO MAKE THIS LIVE: Replace `YOUR_FORMSPREE_ID` below
+        with your actual Formspree form ID.
+
+        Steps:
+        1. Sign up free at formspree.io
+        2. Create a new form, copy the endpoint ID
+        3. Paste it in the action="" attribute below
+        4. Done — emails will land in your Formspree inbox
+
+        For the proper Supabase backend, Claude Code will
+        wire that up later in the build phase.
+        ═══════════════════════════════════════════════════
+      -->
+      <form class="signup-form" id="waitlistForm"
+            action="https://formspree.io/f/YOUR_FORMSPREE_ID"
+            method="POST">
+        <input
+          type="email"
+          name="email"
+          placeholder="your@email.com"
+          required
+          autocomplete="email">
+        <button type="submit">Join Waitlist</button>
+      </form>
+
+      <div class="form-success" id="formSuccess">
+        <span class="dot"></span>
+        You're in. Watch your inbox.
+      </div>
+
+      <p class="form-meta">
+        <span>First 100 founding members</span>
+        <span class="honey-dot"></span>
+        <span>Lifetime access for $99</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ THE PROBLEM ═══════════ -->
+<section>
+  <div class="container">
+    <div class="section-head">
+      <div class="section-num">01 — The problem</div>
+      <div>
+        <h2 class="section-title">Your data is everywhere. Your <em>insight</em> is nowhere.</h2>
+        <p class="section-desc">Most people who get blood tests, wear smartwatches, and try to eat better are drowning in disconnected information. Their watch says one thing, their lab report says another, and their nutrition app knows nothing about either.</p>
+      </div>
+    </div>
+
+    <div class="problem-grid">
+      <div class="problem-cell">
+        <div class="problem-num">i.</div>
+        <h3 class="problem-headline">Your watch sees patterns.</h3>
+        <p class="problem-desc">Steps, heart rate, sleep, recovery. Continuous, daily, granular. But disconnected from anything clinical.</p>
+      </div>
+      <div class="problem-cell">
+        <div class="problem-num">ii.</div>
+        <h3 class="problem-headline">Your blood holds truth.</h3>
+        <p class="problem-desc">Inflammation, hormones, lipids, deficiencies. Decades of validated science. But you only see it twice a year.</p>
+      </div>
+      <div class="problem-cell">
+        <div class="problem-num">iii.</div>
+        <h3 class="problem-headline">Your meals fuel both.</h3>
+        <p class="problem-desc">What you eat affects every number on every report. But no app you own knows about either of them.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FEATURES ═══════════ -->
+<section>
+  <div class="container">
+    <div class="section-head">
+      <div class="section-num">02 — What's coming</div>
+      <div>
+        <h2 class="section-title">One quiet system, <em>fully connected</em>.</h2>
+        <p class="section-desc">Built for people who want to understand their own body — not be told what to do by another generic wellness app.</p>
+      </div>
+    </div>
+
+    <div class="features">
+
+      <div class="feature">
+        <div class="feature-icon">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="4" width="14" height="24" rx="3"/>
+            <path d="M14 9h4M16 14v4M14 18h4"/>
+          </svg>
+        </div>
+        <div class="feature-eyebrow">Wearables</div>
+        <h3>Every signal, in one place.</h3>
+        <p>Apple Health, Fitbit, Garmin, Whoop, Google Fit. Real-time sync, daily summaries, longitudinal trends. Your watch finally talks to your app.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 4 C 10 13, 8 18, 8 22 a8 8 0 0 0 16 0 c 0 -4 -2 -9 -8 -18 z"/>
+          </svg>
+        </div>
+        <div class="feature-eyebrow">Blood reports</div>
+        <h3>Upload a PDF. Read your blood.</h3>
+        <p>AI reads your lab report, extracts every biomarker, and translates it into plain language. Tracks trends across every test you've ever had.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 14c0-3 2-6 6-6h8c4 0 6 3 6 6v4c0 6-4 10-10 10s-10-4-10-10v-4z"/>
+            <path d="M12 8c0-2 1-4 4-4s4 2 4 4"/>
+          </svg>
+        </div>
+        <div class="feature-eyebrow">AI meal planning</div>
+        <h3>Plans that read your numbers.</h3>
+        <p>Vegetarian, vegan, omnivore, keto. Plans adjust to your blood markers, your goals, your activity level. Air-fryer-friendly. No fluff.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="16" cy="16" r="11"/>
+            <path d="M16 11v5l3 3"/>
+          </svg>
+        </div>
+        <div class="feature-eyebrow">Suggested tests</div>
+        <h3>Know what to ask your GP.</h3>
+        <p>Based on your goals and current data, the AI proactively recommends which blood tests to request next — and which are likely Medicare-rebatable in Australia.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FOUNDER STORY ═══════════ -->
+<section class="founder">
+  <div class="container">
+    <div class="founder-quote-num">i.</div>
+    <div class="founder-content">
+      <div class="founder-eyebrow">Built in Public · Adelaide</div>
+      <h2>I smoked for fifteen years. I'm building this app while I quit. <em>You'll watch every step.</em></h2>
+      <p>For most of my twenties I was a smoker. I tried to quit three or four times. Today I'm doing it for real, and I'm doing it differently — by measuring everything, publicly, and using the same data to build the app I wished existed.</p>
+      <p>Smartwatch data. Blood markers. Body recomposition. All tracked, all connected, all turned into plain-English insights by AI. I'll show you my numbers as they change. I'll show you what features go in based on what I actually need. The product gets built on lived experience, not focus groups.</p>
+      <p>If you've ever tried to quit something, transform your body, or just understand your own health better — follow along. The waitlist gets first access, founding member pricing, and weekly updates from the build.</p>
+      <div class="founder-sig">
+        — Paril
+        <small>Founder · Adelaide, SA</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FOUNDING MEMBER ═══════════ -->
+<section class="founding">
+  <div class="container">
+    <div class="founding-eyebrow">
+      <span>Founding Members</span>
+      <span class="dot"></span>
+      <span>First 100 only</span>
+    </div>
+    <h2>Lifetime access. <em>Ninety-nine dollars.</em></h2>
+    <p class="founding-meta">
+      The first 100 people on the waitlist get lifetime access to every tier — forever. After that, this offer disappears and pricing returns to monthly subscription.
+    </p>
+
+    <div class="founding-perks">
+      <div class="perk">
+        <div class="perk-num">∞</div>
+        <div class="perk-label">Lifetime Access</div>
+      </div>
+      <div class="perk">
+        <div class="perk-num">i.</div>
+        <div class="perk-label">All Tiers Unlocked</div>
+      </div>
+      <div class="perk">
+        <div class="perk-num">ii.</div>
+        <div class="perk-label">Founder Updates</div>
+      </div>
+      <div class="perk">
+        <div class="perk-num">iii.</div>
+        <div class="perk-label">Direct Feedback Line</div>
+      </div>
+    </div>
+
+    <a href="#waitlist" class="topbar-cta" style="display: inline-block;">Join the Waitlist</a>
+  </div>
+</section>
+
+<!-- ═══════════ FAQ ═══════════ -->
+<section>
+  <div class="container">
+    <div class="section-head">
+      <div class="section-num">03 — Questions</div>
+      <div>
+        <h2 class="section-title">A few things people <em>have asked</em>.</h2>
+      </div>
+    </div>
+
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>When does the app launch?</summary>
+        <p>The MVP is targeting a soft launch in 8–12 weeks, starting with smartwatch sync and AI meal planning. Blood report analysis follows shortly after. Waitlist members get access first.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Which smartwatches will it support?</summary>
+        <p>Apple Health, Fitbit, Garmin, Google Fit, Whoop, and Samsung Health at launch — through a single integration so your data flows in regardless of which watch you wear.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Do I need a smartwatch to use it?</summary>
+        <p>No. You can use the app with manual entry only, or with just blood reports, or with both wearables and blood. The AI works with whatever signals you give it.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Is this medical advice?</summary>
+        <p>No. Intelligent Ageing provides health insights and suggestions, not medical diagnoses. Everything the AI surfaces is meant to help you ask better questions at your next doctor's appointment — not replace one.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What happens to my data?</summary>
+        <p>Your data is yours. Encrypted at rest, never sold, never shared. You can export everything or delete your account at any time. Privacy policy goes live with the app.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FINAL CTA ═══════════ -->
+<section class="cta">
+  <div class="container">
+    <h2>The next thirty years <em>start now.</em></h2>
+    <a href="#waitlist" class="topbar-cta" style="display: inline-block; padding: 16px 32px; font-size: 13px; background: var(--sage); color: var(--bone-2);">Join the Waitlist</a>
+  </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-mark">
+      <svg style="color: var(--sage);"><use href="#ia-mark"/></svg>
+      <span>intelligent <em>ageing</em></span>
+    </div>
+    <div class="footer-credit">— built in Adelaide, with care.</div>
+    <div class="footer-meta">© 2026 · v0.1</div>
+  </div>
+</footer>
+
+<script>
+  // Handle form submission
+  const form = document.getElementById('waitlistForm');
+  const success = document.getElementById('formSuccess');
+
+  form.addEventListener('submit', async (e) => {
+    // If Formspree ID isn't set, prevent submission and show local success
+    const action = form.getAttribute('action');
+    if (action.includes('YOUR_FORMSPREE_ID')) {
+      e.preventDefault();
+      console.log('Email captured locally (form not yet wired to Formspree):', form.email.value);
+      form.style.display = 'none';
+      success.classList.add('active');
+      return;
+    }
+
+    // If Formspree IS set, submit via fetch for nicer UX
+    e.preventDefault();
+    try {
+      const response = await fetch(action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (response.ok) {
+        form.style.display = 'none';
+        success.classList.add('active');
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  });
+</script>
+
+</body>
+</html>
