@@ -1,2 +1,2 @@
-# intelligent-ageing
-IntelligentAgeing - Waitlist landing page
+# Haemiq
+Haemiq - Waitlist landing page
